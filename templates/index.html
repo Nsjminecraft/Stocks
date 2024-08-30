@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Prices</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 5px;
+            margin-right: 10px;
+        }
+        input[type="text"] {
+            padding: 5px;
+            margin-right: 10px;
+        }
+        select {
+            padding: 5px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stock Prices from Different Sources</h1>
+        <!-- Form for inputting or selecting stock symbol -->
+        <form method="post" action="/">
+            <label for="symbol">Type the symbol:</label>
+            <input type="text" id="symbol" name="symbol" placeholder="Enter symbol or select from list" value="{{ selected_symbol }}">
+            <label for="Nameof Corp">Enter name of corp:</label>
+            <input type="text" id="symbol_of_corp" name="symbol_of_corp" placeholder="Enter the name of the company" value="{{ selected_symbol}}">
+            <select id="predefined-symbols" name="predefined-symbols">
+                <option value="">Select a Symbol</option>
+                <option value="AAPL">AAPL - Apple</option>
+                <option value="GOOGL">GOOGL - Alphabet (Google)</option>
+                <option value="MSFT">MSFT - Microsoft</option>
+                <option value="TSLA">TSLA - Tesla</option>
+                <option value="AMZN">AMZN - Amazon</option>
+                <option value="NVDA">NVDA - Nvidia </option>
+                <option value="CTSH">CTSH - Cognizant</option>
+                <!-- Add more symbols as needed -->
+            </select>
+            <button type="submit">Get Price</button>
+        </form>
+        <div class="stocks">
+            {% for stock in stocks %}
+            <div class="stock">
+                <h2>{{ stock.symbol }}</h2>
+                <p>Price: ${{ stock.price }}</p>
+                <p>Last Updated: {{ stock.time }}</p>
+                <p>Source: {{ stock.source }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script>
+        // Update the text input with the selected symbol from the dropdown
+        document.getElementById('predefined-symbols').addEventListener('change', function() {
+            var selectedname = this.value;
+            //document.write(selectedname)
+            if (selectedname === "AAPL"){
+                document.getElementById('symbol_of_corp').value = "Apple";
+                //document.write(selectedname)
+            }else if (selectedname === "GOOGL"){
+                document.getElementById('symbol_of_corp').value = "Google";
+            }else if (selectedname === "MSFT"){
+                document.getElementById('symbol_of_corp').value = "Microsoft";
+            }else if (selectedname === "TSLA"){
+                document.getElementById('symbol_of_corp').value = "Tesla";
+            }else if (selectedname === "AMZN"){
+                document.getElementById('symbol_of_corp').value = "Amazon";
+            }else if (selectedname === "NVDA"){
+                document.getElementById('symbol_of_corp').value = "Nvidia";
+            }else if (selectedname === "CTSH"){
+                document.getElementById('symbol_of_corp').value = "Cognizant";
+            };
+            var selectedValue = this.value;
+            document.getElementById('symbol').value = selectedValue;
+        });
+    </script>
+</body>
+</html>

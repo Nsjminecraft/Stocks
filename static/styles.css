@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.stocks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.stock {
+    background-color: #e7e7e7;
+    padding: 15px;
+    border-radius: 5px;
+    width: 30%;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.stock h2 {
+    margin: 0;
+    color: #444;
+}
+
+.stock p {
+    margin: 5px 0;
+    color: #555;
+}
